@@ -1,5 +1,1 @@
-export {
-    User,
-    Credentials,
-    RegistrationInfo,
-}
+export { User, Credentials, RegistrationInfo };

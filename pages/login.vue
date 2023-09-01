@@ -21,7 +21,7 @@ const handleLogin = async () => {
 };
 
 definePageMeta({
-  middleware: ['guest'],
+  middleware: ["guest"],
 });
 </script>
 

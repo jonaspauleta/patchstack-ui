@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { useAuthStore } from "~/stores/useAuthStore";
-import {navigateTo} from "#app";
+import { navigateTo } from "#app";
 
 const form = ref({
   name: "",
   email: "",
   password: "",
-  password_confirmation: ""
+  password_confirmation: "",
 });
 
 const auth = useAuthStore();
@@ -17,12 +17,12 @@ const handleRegister = async () => {
   const { error } = await auth.register(form.value);
 
   if (!error.value) {
-    navigateTo('/');
+    navigateTo("/");
   }
 };
 
 definePageMeta({
-  middleware: ['guest'],
+  middleware: ["guest"],
 });
 </script>
 
