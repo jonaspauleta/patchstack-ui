@@ -33,6 +33,8 @@
     "vitest": "^0.34.3"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.11"
   }
 }

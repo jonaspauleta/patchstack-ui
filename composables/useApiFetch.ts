@@ -2,6 +2,8 @@ import type { UseFetchOptions } from "nuxt/app";
 import { useRequestHeaders } from "nuxt/app";
 
 export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
+  const config = useRuntimeConfig();
+
   let headers: any = {
     accept: "application/json",
     referer: "http://localhost:3000",
@@ -20,7 +22,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     };
   }
 
-  return useFetch("http://localhost:8000" + path, {
+  return useFetch(config.public.patchstack_api_url + path, {
     credentials: "include",
     watch: false,
     ...options,
