@@ -6,7 +6,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
 
   let headers: any = {
     accept: "application/json",
-    referer: "http://localhost:3000",
+    referer: config.public.app_url,
   };
 
   const token = useCookie("XSRF-TOKEN");
@@ -22,7 +22,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     };
   }
 
-  return useFetch(config.public.api_url + path, {
+  return useFetch("/backend" + path, {
     credentials: "include",
     watch: false,
     ...options,
