@@ -4,6 +4,6 @@
 
 <template>
   <div class="text-white">
-    Page: foo
+    Me
   </div>
 </template>

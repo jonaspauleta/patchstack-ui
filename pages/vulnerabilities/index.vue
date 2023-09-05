@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div>Page: foo</div>
+  <div class="text-white">
+    Vulnerabilities
+  </div>
 </template>
-
-<style scoped></style>

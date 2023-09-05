@@ -1,1 +1,8 @@
-export { User, Credentials, RegistrationInfo };
+import {ButtonSizes} from "~/models/ButtonSizes";
+
+export {
+    User,
+    Credentials,
+    RegistrationInfo,
+    ButtonSizes,
+};

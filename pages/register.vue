@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useAuthStore } from "~/stores/useAuthStore";
 import { navigateTo } from "#app";
+import PrimaryButton from "~/components/PrimaryButton.vue";
+import {ButtonSizes} from "~/models";
 
 const form = ref({
   name: "",
@@ -27,29 +29,55 @@ definePageMeta({
 </script>
 
 <template>
-  <form @submit.prevent="handleRegister">
-    <label>
-      Name
-      <input v-model="form.name" type="text" />
-    </label>
+  <div class="mt-8">
+    <h2 class="text-3xl font-bold text-center leading-7 text-white">
+      Register
+    </h2>
 
-    <label>
-      Email
-      <input v-model="form.email" type="email" />
-    </label>
+    <form @submit.prevent="handleRegister">
+      <div class="mt-8 mx-8">
+        <TextInput
+            class="mt-4"
+            label="Name"
+            id="name"
+            name="name"
+            type="text"
+            :modelValue="form.name"
+        />
 
-    <label>
-      Password
-      <input v-model="form.password" type="password" />
-    </label>
+        <TextInput
+            class="mt-4"
+            label="Email"
+            id="email"
+            name="email"
+            type="email"
+            :modelValue="form.email"
+        />
 
-    <label>
-      Password Confirmation
-      <input v-model="form.password_confirmation" type="password" />
-    </label>
+        <TextInput
+            class="mt-4"
+            label="Password"
+            id="password"
+            name="password"
+            type="password"
+            :modelValue="form.password"
+        />
 
-    <button>Register</button>
-  </form>
+        <TextInput
+            class="mt-4"
+            label="Password Confirmation"
+            id="password_confirmation"
+            name="password_confirmation"
+            type="password"
+            :modelValue="form.password_confirmation"
+        />
+
+        <PrimaryButton class="w-full mt-8" :size="ButtonSizes.BIG">
+          Register
+        </PrimaryButton>
+      </div>
+    </form>
+  </div>
 </template>
 
 <style scoped></style>
