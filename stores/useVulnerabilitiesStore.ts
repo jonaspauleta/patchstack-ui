@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useApiFetch } from "~/composables/useApiFetch";
-import { VulnerabilityRequest, VulnerabilityResponse } from "~/models";
+import { VulnerabilityRequest } from "~/models/VulnerabilityRequest";
+import { VulnerabilityResponse } from "~/models/VulnerabilityResponse";
 
 export const useAuthStore = defineStore("vulnerabilities", () => {
   const index = async () => {
@@ -8,25 +9,39 @@ export const useAuthStore = defineStore("vulnerabilities", () => {
     return data as VulnerabilityResponse[];
   };
 
-  const show = async (vulnerability_id: number) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}`);
+  const show = async (vulnerabilityId: number) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}`,
+    );
+
     return data as VulnerabilityResponse;
-  }
+  };
 
   const store = async (vulnerability: VulnerabilityRequest) => {
     const { data } = await useApiFetch("/api/vulnerabilities/", vulnerability);
-    return data as VulnerabilityResponse;
-  }
 
-  const update = async (vulnerability_id: number, vulnerability: VulnerabilityRequest) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}`, vulnerability);
     return data as VulnerabilityResponse;
-  }
+  };
 
-  const destroy = async (vulnerability_id: number) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}`);
-    return data.statusCode === 200;
-  }
+  const update = async (
+    vulnerabilityId: number,
+    vulnerability: VulnerabilityRequest,
+  ) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}`,
+      vulnerability,
+    );
+
+    return data as VulnerabilityResponse;
+  };
+
+  const destroy = async (vulnerabilityId: number) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}`,
+    );
+
+    return data;
+  };
 
   return {
     index,

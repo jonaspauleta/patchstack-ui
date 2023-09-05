@@ -5,11 +5,7 @@
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img
-                class="h-8"
-                src="/logo.svg"
-                alt="Patchstack"
-              />
+              <img class="h-8" src="/logo.svg" alt="Patchstack" />
             </div>
 
             <div class="hidden md:block">
@@ -27,14 +23,14 @@
                 </NuxtLink>
 
                 <NuxtLink
-                    v-if="auth.isLoggedIn"
-                    to="/vulnerabilities"
-                    :class="[
-                      route.path === '/vulnerabilities'
-                        ? 'bg-white text-gray-700'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
-                    ]"
+                  v-if="auth.isLoggedIn"
+                  to="/vulnerabilities"
+                  :class="[
+                    route.path === '/vulnerabilities'
+                      ? 'bg-white text-gray-700'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'rounded-md px-3 py-2 text-sm font-medium',
+                  ]"
                 >
                   Vulnerabilities
                 </NuxtLink>
@@ -42,7 +38,7 @@
             </div>
           </div>
 
-          <div class="hidden md:block" v-if="auth.isLoggedIn">
+          <div v-if="auth.isLoggedIn" class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
               <div class="relative p-2 text-gray-400">
                 <span>{{ auth.user.name }}</span>
@@ -50,7 +46,9 @@
 
               <!-- Profile dropdown -->
               <Menu as="div" class="relative ml-3">
-                <MenuButton class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <MenuButton
+                  class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                >
                   <span class="absolute -inset-1.5" />
 
                   <span class="sr-only">Open user menu</span>
@@ -66,7 +64,9 @@
                   leave-from-class="transform opacity-100 scale-100"
                   leave-to-class="transform opacity-0 scale-95"
                 >
-                  <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <MenuItems
+                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  >
                     <MenuItem as="div">
                       <NuxtLink
                         to="/me"
@@ -76,8 +76,8 @@
                       </NuxtLink>
 
                       <button
-                          @click="handleLogout"
-                          class="w-full text-left block px-4 py-2 text-sm text-gray-700"
+                        class="w-full text-left block px-4 py-2 text-sm text-gray-700"
+                        @click="handleLogout"
                       >
                         Logout
                       </button>
@@ -88,15 +88,15 @@
             </div>
           </div>
 
-          <div class="hidden md:block" v-else>
+          <div v-else class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
               <div class="ml-10 flex items-baseline space-x-4">
                 <NuxtLink
-                    to="/login"
-                    :class="[
-                      route.path === '/login'
-                        ? 'bg-white text-gray-700'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  to="/login"
+                  :class="[
+                    route.path === '/login'
+                      ? 'bg-white text-gray-700'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'rounded-md px-3 py-2 text-sm font-medium',
                   ]"
                 >
@@ -104,11 +104,11 @@
                 </NuxtLink>
 
                 <NuxtLink
-                    to="/register"
-                    :class="[
-                      route.path === '/register'
-                        ? 'bg-white text-gray-700'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  to="/register"
+                  :class="[
+                    route.path === '/register'
+                      ? 'bg-white text-gray-700'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'rounded-md px-3 py-2 text-sm font-medium',
                   ]"
                 >
@@ -120,7 +120,9 @@
 
           <div class="-mr-2 flex md:hidden">
             <!-- Mobile menu button -->
-            <DisclosureButton class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <DisclosureButton
+              class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            >
               <span class="absolute -inset-0.5" />
 
               <span class="sr-only">Open main menu</span>
@@ -153,13 +155,13 @@
           </DisclosureButton>
 
           <DisclosureButton
-              v-if="auth.isLoggedIn"
-              :as="NuxtLink"
-              to="/vulnerabilities"
-              :class="[
-                route.path === '/vulnerabilities'
-                  ? 'bg-white text-gray-700'
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+            v-if="auth.isLoggedIn"
+            :as="NuxtLink"
+            to="/vulnerabilities"
+            :class="[
+              route.path === '/vulnerabilities'
+                ? 'bg-white text-gray-700'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
               'block rounded-md px-3 py-2 text-base font-medium',
             ]"
           >
@@ -167,10 +169,7 @@
           </DisclosureButton>
         </div>
 
-        <div
-            v-if="auth.isLoggedIn"
-            class="border-t border-gray-700 pb-3 pt-4"
-        >
+        <div v-if="auth.isLoggedIn" class="border-t border-gray-700 pb-3 pt-4">
           <div class="flex items-center px-5">
             <div class="flex-shrink-0">
               <UserCircleIcon class="h-10 w-10 rounded-full" />
@@ -189,40 +188,37 @@
 
           <div class="mt-3 space-y-1 px-2">
             <DisclosureButton
-                :as="NuxtLink"
-                to="/me"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              :as="NuxtLink"
+              to="/me"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
             >
               My Profile
             </DisclosureButton>
 
             <DisclosureButton
-                as="button"
-                @click="handleLogout"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              as="button"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              @click="handleLogout"
             >
               Logout
             </DisclosureButton>
           </div>
         </div>
 
-        <div
-            v-else
-            class="border-t border-gray-700 pb-3 pt-3"
-        >
+        <div v-else class="border-t border-gray-700 pb-3 pt-3">
           <div class="space-y-1 px-2">
             <DisclosureButton
-                :as="NuxtLink"
-                to="/login"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              :as="NuxtLink"
+              to="/login"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
             >
               Login
             </DisclosureButton>
 
             <DisclosureButton
-                :as="NuxtLink"
-                to="/register"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              :as="NuxtLink"
+              to="/register"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
             >
               Register
             </DisclosureButton>
@@ -249,7 +245,11 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon, UserCircleIcon } from "@heroicons/vue/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  UserCircleIcon,
+} from "@heroicons/vue/24/outline";
 import { useAuthStore } from "~/stores/useAuthStore";
 import NuxtLink from "#app/components/nuxt-link";
 

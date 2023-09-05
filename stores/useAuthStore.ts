@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
-import { User, Credentials, RegistrationInfo } from "~/models";
+import { User } from "~/models/User";
+import { Credentials } from "~/models/Credentials";
+import { RegistrationInfo } from "~/models/RegistrationInfo";
 import { useApiFetch } from "~/composables/useApiFetch";
 
 export const useAuthStore = defineStore("auth", () => {
@@ -23,6 +25,11 @@ export const useAuthStore = defineStore("auth", () => {
     await fetchUser();
 
     return response;
+  };
+
+  const updatePassword = async (info: RegistrationInfo) => {
+    const { data } = await useApiFetch("/api/user", info);
+    return data;
   };
 
   const login = async (credentials: Credentials) => {
@@ -51,6 +58,7 @@ export const useAuthStore = defineStore("auth", () => {
   return {
     user,
     register,
+    updatePassword,
     login,
     logout,
     isLoggedIn,

@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div class="m-8">
@@ -13,8 +11,9 @@
     </p>
 
     <p class="mt-2 text-md text-white">
-      This Application is built in Nuxt 3, fed by a Laravel API.
-      With this app, you can view, create, edit or delete the Top 10 OWASP Web Application Security Risks.
+      This Application is built in Nuxt 3, fed by a Laravel API. With this app,
+      you can view, create, edit or delete the Top 10 OWASP Web Application
+      Security Risks.
     </p>
 
     <p class="mt-2 text-md text-white">

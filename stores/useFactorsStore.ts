@@ -1,32 +1,49 @@
 import { defineStore } from "pinia";
 import { useApiFetch } from "~/composables/useApiFetch";
-import { FactorRequest, FacrorResponse } from "~/models";
+import { FactorRequest } from "~/models/FactorRequest";
+import { FactorResponse } from "~/models/FactorResponse";
 
 export const useAuthStore = defineStore("factors", () => {
-  const index = async (vulnerability_id: number) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}/factors`);
-    return data as FacrorResponse[];
+  const index = async (vulnerabilityId: number) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}/factors`,
+    );
+    return data as FactorResponse[];
   };
 
-  const show = async (vulnerability_id: number, factor_id: number) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}/factors/${factor_id}`);
-    return data as FacrorResponse;
-  }
+  const show = async (vulnerabilityId: number, factorId: number) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
+    );
+    return data as FactorResponse;
+  };
 
-  const store = async (vulnerability_id: number, factor: FactorRequest) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}/factors`, factor);
-    return data as FacrorResponse;
-  }
+  const store = async (vulnerabilityId: number, factor: FactorRequest) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}/factors`,
+      factor,
+    );
+    return data as FactorResponse;
+  };
 
-  const update = async (vulnerability_id: number, factor_id: number, factor: FactorRequest) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}/factors/${factor_id}`, factor);
-    return data as FacrorResponse;
-  }
+  const update = async (
+    vulnerabilityId: number,
+    factorId: number,
+    factor: FactorRequest,
+  ) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
+      factor,
+    );
+    return data as FactorResponse;
+  };
 
-  const destroy = async (vulnerability_id: number, factor_id: number) => {
-    const { data } = await useApiFetch(`/api/vulnerabilities/${vulnerability_id}/factors/${factor_id}`);
-    return data.statusCode === 200;
-  }
+  const destroy = async (vulnerabilityId: number, factorId: number) => {
+    const { data } = await useApiFetch(
+      `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
+    );
+    return data;
+  };
 
   return {
     index,

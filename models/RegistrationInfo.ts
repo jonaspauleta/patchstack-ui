@@ -1,6 +1,6 @@
-export interface RegistrationInfo {
+import { Credentials } from "~/models/Credentials";
+
+export interface RegistrationInfo extends Credentials {
   name: string;
   email: string;
-  password: string;
-  password_confirmation: string;
 }
