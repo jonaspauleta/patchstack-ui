@@ -44,7 +44,7 @@
 
           <div class="hidden md:block" v-if="auth.isLoggedIn">
             <div class="ml-4 flex items-center md:ml-6">
-              <div class="relative p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <div class="relative p-2 text-gray-400">
                 <span>{{ auth.user.name }}</span>
               </div>
 
@@ -77,7 +77,7 @@
 
                       <button
                           @click="handleLogout"
-                          class="block px-4 py-2 text-sm text-gray-700"
+                          class="w-full text-left block px-4 py-2 text-sm text-gray-700"
                       >
                         Logout
                       </button>

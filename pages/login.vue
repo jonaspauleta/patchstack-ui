@@ -28,15 +28,15 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="mt-8">
-    <h2 class="text-3xl font-bold text-center leading-7 text-white">
-      Login
-    </h2>
+  <div class="mt-8 flex w-full">
+    <div class="flex-1 flex justify-center items-center">
+      <form @submit.prevent="handleLogin" class="m-8">
+        <h2 class="text-3xl font-bold text-center leading-7 text-white">
+          Login
+        </h2>
 
-    <form @submit.prevent="handleLogin">
-      <div class="mt-8 mx-8">
         <TextInput
-            class="mt-4"
+            class="mt-4 block w-full"
             label="Email"
             id="email"
             name="email"
@@ -45,7 +45,7 @@ definePageMeta({
         />
 
         <TextInput
-            class="mt-4"
+            class="mt-4 block w-full"
             label="Password"
             id="password"
             name="password"
@@ -53,10 +53,10 @@ definePageMeta({
             :modelValue="form.password"
         />
 
-        <PrimaryButton class="w-full mt-8" :size="ButtonSizes.BIG">
+        <PrimaryButton class="mt-8 block w-full" :size="ButtonSizes.BIG">
           Login
         </PrimaryButton>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </template>
