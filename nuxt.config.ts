@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      patchstack_api_url: process.env.PATCHSTACK_API_URL,
+      api_url: process.env.API_URL,
     }
   },
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
