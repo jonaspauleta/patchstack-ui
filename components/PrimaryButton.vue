@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ButtonSizes } from "~/models/ButtonSizes";
+import {PropType} from "@vue/runtime-core";
 
 const props = defineProps({
   size: {
-    type: ButtonSizes,
-    required: false,
+    type: String as PropType<`${ButtonSizes}`>,
     default: ButtonSizes.DEFAULT,
+    required: false,
   },
 });
 
