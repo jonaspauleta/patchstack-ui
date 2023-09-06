@@ -2,7 +2,11 @@
 import { ButtonSizes } from "~/models/ButtonSizes";
 
 const props = defineProps({
-  size: ButtonSizes,
+  size: {
+    type: ButtonSizes,
+    required: false,
+    default: ButtonSizes.DEFAULT,
+  },
 });
 
 const classes = computed(() => {
