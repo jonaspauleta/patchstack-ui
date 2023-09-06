@@ -1,22 +1,29 @@
 <script lang="ts" setup>
+import { useToast } from "vue-toastification";
 import { useAuthStore } from "~/stores/useAuthStore";
 
 const errors = ref("");
 const auth = useAuthStore();
+const toast = useToast();
 
 const form = ref({
-  password: "",
-  password_confirmation: "",
+  old_password: "",
+  new_password: "",
+  new_password_confirmation: "",
 });
 
 const handleUpdatePassword = async () => {
-  if (auth.isLoggedIn) return;
+  if (!auth.isLoggedIn) return;
 
   const { error } = await auth.updatePassword(form.value);
   errors.value = error?.value?.data?.errors ?? "";
 
   if (!error.value) {
-    alert("Password updated successfully!");
+    form.value.old_password = "";
+    form.value.new_password = "";
+    form.value.new_password_confirmation = "";
+
+    toast.success("Password Updated Successfully");
   }
 };
 
@@ -47,25 +54,35 @@ definePageMeta({
         <form @submit.prevent="handleUpdatePassword">
           <div class="mb-4">
             <TextInput
-              id="password"
-              v-model:value="form.password"
+              id="old_password"
+              v-model:value="form.old_password"
               class="mt-4 block w-full"
-              label="Password"
-              name="password"
+              name="old_password"
+              label="Old Password"
               type="password"
-              :error="errors?.password ? errors.password[0] : ''"
+              :error="errors?.old_password ? errors.old_password[0] : ''"
             />
 
             <TextInput
-              id="password_confirmation"
-              v-model:value="form.password_confirmation"
+              id="new_password"
+              v-model:value="form.new_password"
               class="mt-4 block w-full"
-              label="Password Confirmation"
-              name="password_confirmation"
+              name="new_password"
+              label="New Password"
+              type="password"
+              :error="errors?.new_password ? errors.new_password[0] : ''"
+            />
+
+            <TextInput
+              id="new_password_confirmation"
+              v-model:value="form.new_password_confirmation"
+              class="mt-4 block w-full"
+              name="new_password_confirmation"
+              label="New Password Confirmation"
               type="password"
               :error="
-                errors?.password_confirmation
-                  ? errors.password_confirmation[0]
+                errors?.new_password_confirmation
+                  ? errors.new_password_confirmation[0]
                   : ''
               "
             />

@@ -21,7 +21,7 @@ const handleRegister = async () => {
   errors.value = error?.value?.data?.errors ?? "";
 
   if (!error.value) {
-    navigateTo("/");
+    return navigateTo("/");
   }
 };
 

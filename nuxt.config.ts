@@ -13,6 +13,9 @@ export default defineNuxtConfig({
   devServer: {
     host: process.env.HOST ?? "127.0.0.1",
   },
+  build: {
+    transpile: ["vue-toastification"],
+  },
   runtimeConfig: {
     public: {
       app_url: process.env.APP_URL,

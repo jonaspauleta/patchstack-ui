@@ -5,42 +5,59 @@ import { VulnerabilityResponse } from "~/models/VulnerabilityResponse";
 
 export const useAuthStore = defineStore("vulnerabilities", () => {
   const index = async () => {
-    const { data } = await useApiFetch("/api/vulnerabilities");
-    return data as VulnerabilityResponse[];
+    const { data, error } = await useApiFetch("/api/vulnerabilities");
+
+    return {
+      data: data as VulnerabilityResponse[],
+      error,
+    };
   };
 
   const show = async (vulnerabilityId: number) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}`,
     );
 
-    return data as VulnerabilityResponse;
+    return {
+      data: data as VulnerabilityResponse,
+      error,
+    };
   };
 
   const store = async (vulnerability: VulnerabilityRequest) => {
-    const { data } = await useApiFetch("/api/vulnerabilities/", vulnerability);
+    const { data, error } = await useApiFetch("/api/vulnerabilities/", {
+      method: "POST",
+      body: vulnerability,
+    });
 
-    return data as VulnerabilityResponse;
+    return {
+      data: data as VulnerabilityResponse,
+      error,
+    };
   };
 
   const update = async (
     vulnerabilityId: number,
     vulnerability: VulnerabilityRequest,
   ) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}`,
-      vulnerability,
+      {
+        method: "PUT",
+        body: vulnerability,
+      },
     );
 
-    return data as VulnerabilityResponse;
+    return {
+      data: data as VulnerabilityResponse,
+      error,
+    };
   };
 
   const destroy = async (vulnerabilityId: number) => {
-    const { data } = await useApiFetch(
-      `/api/vulnerabilities/${vulnerabilityId}`,
-    );
-
-    return data;
+    return await useApiFetch(`/api/vulnerabilities/${vulnerabilityId}`, {
+      method: "DELETE",
+    });
   };
 
   return {

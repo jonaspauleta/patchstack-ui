@@ -5,25 +5,40 @@ import { FactorResponse } from "~/models/FactorResponse";
 
 export const useAuthStore = defineStore("factors", () => {
   const index = async (vulnerabilityId: number) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors`,
     );
-    return data as FactorResponse[];
+
+    return {
+      data: data as FactorResponse[],
+      error,
+    };
   };
 
   const show = async (vulnerabilityId: number, factorId: number) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
     );
-    return data as FactorResponse;
+
+    return {
+      data: data as FactorResponse,
+      error,
+    };
   };
 
   const store = async (vulnerabilityId: number, factor: FactorRequest) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors`,
-      factor,
+      {
+        method: "POST",
+        body: factor,
+      },
     );
-    return data as FactorResponse;
+
+    return {
+      data: data as FactorResponse,
+      error,
+    };
   };
 
   const update = async (
@@ -31,18 +46,27 @@ export const useAuthStore = defineStore("factors", () => {
     factorId: number,
     factor: FactorRequest,
   ) => {
-    const { data } = await useApiFetch(
+    const { data, error } = await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
-      factor,
+      {
+        method: "PUT",
+        body: factor,
+      },
     );
-    return data as FactorResponse;
+
+    return {
+      data: data as FactorResponse,
+      error,
+    };
   };
 
   const destroy = async (vulnerabilityId: number, factorId: number) => {
-    const { data } = await useApiFetch(
+    return await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
+      {
+        method: "DELETE",
+      },
     );
-    return data;
   };
 
   return {

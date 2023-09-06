@@ -28,8 +28,10 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const updatePassword = async (info: RegistrationInfo) => {
-    const { data } = await useApiFetch("/api/user", info);
-    return data;
+    return await useApiFetch("/api/user", {
+      method: "PUT",
+      body: info,
+    });
   };
 
   const login = async (credentials: Credentials) => {
@@ -57,11 +59,11 @@ export const useAuthStore = defineStore("auth", () => {
 
   return {
     user,
+    isLoggedIn,
     register,
     updatePassword,
     login,
     logout,
-    isLoggedIn,
     fetchUser,
   };
 });
