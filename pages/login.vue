@@ -3,6 +3,10 @@ import { useAuthStore } from "~/stores/useAuthStore";
 import PrimaryButton from "~/components/PrimaryButton.vue";
 import { ButtonSizes } from "~/models/ButtonSizes";
 
+definePageMeta({
+  middleware: ["guest"],
+});
+
 const form = ref({
   email: "",
   password: "",
@@ -24,10 +28,6 @@ const handleLogin = async () => {
     return navigateTo("/");
   }
 };
-
-definePageMeta({
-  middleware: ["guest"],
-});
 </script>
 
 <template>

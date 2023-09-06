@@ -4,6 +4,10 @@ import { navigateTo } from "#app";
 import PrimaryButton from "~/components/PrimaryButton.vue";
 import { ButtonSizes } from "~/models/ButtonSizes";
 
+definePageMeta({
+  middleware: ["guest"],
+});
+
 const form = ref({
   name: "",
   email: "",
@@ -24,10 +28,6 @@ const handleRegister = async () => {
     return navigateTo("/");
   }
 };
-
-definePageMeta({
-  middleware: ["guest"],
-});
 </script>
 
 <template>

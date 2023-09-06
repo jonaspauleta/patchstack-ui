@@ -1,44 +1,26 @@
 import { defineStore } from "pinia";
 import { useApiFetch } from "~/composables/useApiFetch";
 import { FactorRequest } from "~/models/FactorRequest";
-import { FactorResponse } from "~/models/FactorResponse";
 
-export const useAuthStore = defineStore("factors", () => {
+export const useFactorsStore = defineStore("factors", () => {
   const index = async (vulnerabilityId: number) => {
-    const { data, error } = await useApiFetch(
-      `/api/vulnerabilities/${vulnerabilityId}/factors`,
-    );
-
-    return {
-      data: data as FactorResponse[],
-      error,
-    };
+    return await useApiFetch(`/api/vulnerabilities/${vulnerabilityId}/factors`);
   };
 
   const show = async (vulnerabilityId: number, factorId: number) => {
-    const { data, error } = await useApiFetch(
+    return await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
     );
-
-    return {
-      data: data as FactorResponse,
-      error,
-    };
   };
 
   const store = async (vulnerabilityId: number, factor: FactorRequest) => {
-    const { data, error } = await useApiFetch(
+    return await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors`,
       {
         method: "POST",
         body: factor,
       },
     );
-
-    return {
-      data: data as FactorResponse,
-      error,
-    };
   };
 
   const update = async (
@@ -46,18 +28,13 @@ export const useAuthStore = defineStore("factors", () => {
     factorId: number,
     factor: FactorRequest,
   ) => {
-    const { data, error } = await useApiFetch(
+    return await useApiFetch(
       `/api/vulnerabilities/${vulnerabilityId}/factors/${factorId}`,
       {
         method: "PUT",
         body: factor,
       },
     );
-
-    return {
-      data: data as FactorResponse,
-      error,
-    };
   };
 
   const destroy = async (vulnerabilityId: number, factorId: number) => {

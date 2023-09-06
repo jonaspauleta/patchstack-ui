@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { PropType } from "vue";
 import { ButtonSizes } from "~/models/ButtonSizes";
-import {PropType} from "@vue/runtime-core";
 
 const props = defineProps({
   size: {

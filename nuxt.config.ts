@@ -3,16 +3,18 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-  nitro: {
+  /*nitro: {
     routeRules: {
       "/backend/**": {
-        proxy: process.env.API_URL + "/**",
+        proxy: {
+          to: process.env.API_URL + "/**"
+        },
       },
     },
   },
   devServer: {
     host: process.env.HOST ?? "127.0.0.1",
-  },
+  },*/
   build: {
     transpile: ["vue-toastification"],
   },

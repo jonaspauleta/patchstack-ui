@@ -22,7 +22,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     };
   }
 
-  return useFetch("/backend" + path, {
+  return useFetch(config.public.api_url + path, {
     credentials: "include",
     watch: false,
     ...options,

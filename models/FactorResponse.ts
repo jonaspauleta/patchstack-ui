@@ -1,5 +1,5 @@
-import { FactorRequest } from "~/models/FactorRequest";
+import { FactorBase } from "~/models/FactorBase";
 
-export interface FactorResponse extends FactorRequest {
+export interface FactorResponse extends FactorBase {
   id: number;
 }

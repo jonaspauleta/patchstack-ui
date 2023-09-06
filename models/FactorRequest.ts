@@ -1,4 +1,3 @@
-export interface FactorRequest {
-  name: string;
-  value: number;
-}
+import { FactorBase } from "~/models/FactorBase";
+
+export interface FactorRequest extends FactorBase {}

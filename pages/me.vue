@@ -2,6 +2,10 @@
 import { useToast } from "vue-toastification";
 import { useAuthStore } from "~/stores/useAuthStore";
 
+definePageMeta({
+  middleware: ["auth"],
+});
+
 const errors = ref("");
 const auth = useAuthStore();
 const toast = useToast();
@@ -26,10 +30,6 @@ const handleUpdatePassword = async () => {
     toast.success("Password Updated Successfully");
   }
 };
-
-definePageMeta({
-  middleware: ["auth"],
-});
 </script>
 
 <template>
@@ -50,8 +50,12 @@ definePageMeta({
       </div>
 
       <!-- Edit Password Form -->
-      <div class="mt-6">
+      <div class="mt-8">
         <form @submit.prevent="handleUpdatePassword">
+          <h2 class="text-2xl font-bold text-center leading-7 text-white">
+            Update Password
+          </h2>
+
           <div class="mb-4">
             <TextInput
               id="old_password"

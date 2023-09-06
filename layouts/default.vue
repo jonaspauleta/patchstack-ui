@@ -230,6 +230,8 @@
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <slot />
+
+        <ModalsContainer />
       </div>
     </main>
   </div>
@@ -250,6 +252,7 @@ import {
   XMarkIcon,
   UserCircleIcon,
 } from "@heroicons/vue/24/outline";
+import { ModalsContainer } from "vue-final-modal";
 import { useAuthStore } from "~/stores/useAuthStore";
 import NuxtLink from "#app/components/nuxt-link";
 
